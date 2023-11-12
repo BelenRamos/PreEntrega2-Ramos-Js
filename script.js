@@ -175,7 +175,7 @@ while (continuar) {
   console.log("Seleccione una opción:");
   console.log("1. Calcular asistencia para su Curso");
   console.log("2. Saludo");
-  console.log("3. Añadir Alumno");
+  console.log("3. Gestion de Alumnos");
   console.log("4. Ingresar Asistencia de Alumno");
   console.log("5. Mostrar Lista de Alumnos");
   console.log("6. Asistencia Promedio del curso")
@@ -209,29 +209,27 @@ let opcion = parseInt(prompt("Ingrese el número de la opción deseada:"));
         break;
   
       case 3:
+        let accion;
+        while (true) {
+            console.log("Gestion de Alumnos");
+            console.log("1- Agregar Alumno");
+            console.log("2- Modificar alumno");
+            console.log("3- Eliminar alumno");
+            console.log("Presione cualquier letra para salir");
         
-      let accion;
-
-      while (true) {
-          console.log("Gestion de Alumnos");
-          console.log("1- Agregar Alumno");
-          console.log("2- Modificar alumno");
-          console.log("3- Eliminar alumno");
-          console.log("Presione cualquier letra para salir");
-      
-          accion = prompt("Ingrese opción (1/2/3)");
-      
-          if (accion === "1") {
-              agregarAlumno();
-          } else if (accion === "2") {
-              actualizarAlumno();
-          } else if (accion === "3") {
-              eliminarAlumno();
-          } else {
-              // Si la opción no es 1, 2 o 3, salimos del bucle
-              break;
-          }
-      }
+            accion = prompt("Ingrese opción (1/2/3)");
+        
+            if (accion === "1") {
+                agregarAlumno();
+            } else if (accion === "2") {
+                actualizarAlumno();
+            } else if (accion === "3") {
+                eliminarAlumno();
+            } else {
+                // Si la opción no es 1, 2 o 3 se sale del bucle
+                break;
+            }
+        }
         break;
   
       case 4:
