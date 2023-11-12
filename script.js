@@ -132,13 +132,15 @@ function actualizarAlumno() {
 }
 
 
-function cargarAsistencia(nombre, fecha, presente) {
+function cargarAsistencia(nombre, presente) {
   const index = alumnos.findIndex(alumno => alumno.nombre === nombre);
   if (index !== -1) {
-    alumnos[index].asistencia.push({ fecha: fecha, presente: presente });
+    const fechaActual = new Date().toISOString().split('T')[0]; // Obtiene la fecha actual en formato 'YYYY-MM-DD'
+    alumnos[index].asistencia.push({ fecha: fechaActual, presente: presente });
     console.log(`Asistencia registrada para el alumno ${nombre}.`);
   }
 }
+
 
 function calcularAsistenciaAlumno(nombre) {
   const index = alumnos.findIndex(alumno => alumno.nombre === nombre);
