@@ -49,7 +49,7 @@ function alumno(nombre, edad, genero) {
   this.nombre = nombre;
   this.edad = edad;
   this.genero = genero;
-  this.asistencia = [];
+  this.asistencia = [0];
 }
 
 function agregarAlumno() {
@@ -82,7 +82,7 @@ function agregarAlumno() {
       nombre: nombre, 
       edad: edad, 
       genero: genero, 
-      asistencia: [] 
+      asistencia: [0] 
     });
     console.log("¡Alumno agregado exitosamente!");
   } else {
@@ -172,6 +172,7 @@ let continuar = true;
 
 // Menú de opciones
 while (continuar) {
+  console.log("----------------------");
   console.log("Seleccione una opción:");
   console.log("1. Calcular asistencia para su Curso");
   console.log("2. Saludo");
@@ -180,6 +181,7 @@ while (continuar) {
   console.log("5. Mostrar Lista de Alumnos");
   console.log("6. Asistencia Promedio del curso")
   console.log("7. Salir");
+  console.log("----------------------");
 
 let opcion = parseInt(prompt("Ingrese el número de la opción deseada:"));
   
