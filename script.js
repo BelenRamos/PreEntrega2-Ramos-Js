@@ -48,6 +48,24 @@ function alumno(nombre, edad, genero) {
 }
 
 function agregarAlumno(nombre, edad, genero) {
+  // Validar que el nombre sea un string
+  if (typeof nombre !== 'string') {
+    console.log("Error: El nombre debe ser un string.");
+    return;
+  }
+
+  // Validar que el genero sea 'femenino' o 'masculino' (mayúsculas y camelCase)
+  if (!/^(femenino|masculino|[Ff]emenino|[Mm]asculino)$/.test(genero)) {
+    console.log("Error: El género debe ser 'femenino' o 'masculino'.");
+    return;
+  }
+
+  // Validar que la edad sea un número
+  if (typeof edad !== 'number' || isNaN(edad)) {
+    console.log("Error: La edad debe ser un número.");
+    return;
+  }
+
   // Verificar si el nombre del alumno ya existe
   const alumnoExistente = alumnos.find(alumno => alumno.nombre === nombre);
   if (!alumnoExistente) {
@@ -57,6 +75,7 @@ function agregarAlumno(nombre, edad, genero) {
       genero: genero, 
       asistencia: [] 
     });
+    console.log("¡Alumno agregado exitosamente!");
   } else {
     console.log("¡El alumno ya existe!");
   }
@@ -72,13 +91,35 @@ function eliminarAlumno(nombre) {
 }
 
 function actualizarAlumno(nombre, edad, genero) {
+  // Validar que el nombre sea un string
+  if (typeof nombre !== 'string') {
+    console.log("Error: El nombre debe ser un string.");
+    return;
+  }
+
+  // Validar que el genero sea 'femenino' o 'masculino' (mayúsculas y camelCase)
+  if (!/^(femenino|masculino|[Ff]emenino|[Mm]asculino)$/.test(genero)) {
+    console.log("Error: El género debe ser 'femenino' o 'masculino'.");
+    return;
+  }
+
+  // Validar que la edad sea un número
+  if (typeof edad !== 'number' || isNaN(edad)) {
+    console.log("Error: La edad debe ser un número.");
+    return;
+  }
+
   const index = alumnos.findIndex(alumno => alumno.nombre === nombre);
   if (index !== -1) {
+    // Actualizar los datos del alumno
     alumnos[index].edad = edad;
     alumnos[index].genero = genero;
     console.log(`Alumno ${nombre} actualizado con éxito.`);
+  } else {
+    console.log(`Error: No se encontró al alumno ${nombre}.`);
   }
 }
+
 
 function cargarAsistencia(nombre, fecha, presente) {
   const index = alumnos.findIndex(alumno => alumno.nombre === nombre);
