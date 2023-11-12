@@ -1,4 +1,9 @@
-let alumnos = []; // Declarar la variable 'alumnos' al principio del código
+let alumnos = []; 
+
+function containsOnlyLetters(palabra) {
+  let lettersOnlyRegex = /^[a-zA-Z]+$/;
+  return lettersOnlyRegex.test(palabra);
+}
 
 function calcularInasistenciasTotales(inasF, inasM) {
   return inasF + inasM;
@@ -49,9 +54,10 @@ function alumno(nombre, edad, genero) {
 
 function agregarAlumno() {
   let nombre = prompt("Ingrese el nombre del alumno:");
-  // Validar que el nombre sea un string
-  if (typeof nombre !== 'string') {
-    console.log("Error: El nombre debe ser un string.");
+  // LLamo a funcion para validar que solo haya letras en el nombre
+  let esPalabra= containsOnlyLetters(nombre);
+  if (esPalabra==false) {
+    console.log("Error: No puede haber numeros en el nombre");
     return;
   }
 
@@ -84,8 +90,9 @@ function agregarAlumno() {
   }
 }
 
-/* function eliminarAlumno(nombre) {
+function eliminarAlumno() {
   // Mostrar confirmación antes de eliminar
+  let nombre= prompt("¿Que alumno desea eliminar?");
   const confirmar = confirm(`¿Estás seguro de eliminar al alumno ${nombre}?`);
   if (confirmar) {
     alumnos = alumnos.filter(alumno => alumno.nombre !== nombre);
@@ -93,24 +100,25 @@ function agregarAlumno() {
   }
 }
 
-function actualizarAlumno(nombre, edad, genero) {
-  // Validar que el nombre sea un string
-  if (typeof nombre !== 'string') {
-    console.log("Error: El nombre debe ser un string.");
+function actualizarAlumno() {
+  let nombre = prompt("Ingrese el nombre del alumno:");
+  let esPalabra= containsOnlyLetters(nombre);
+  if (esPalabra==false) {
+    console.log("Error: No puede haber numeros en el nombre");
     return;
   }
 
-  // Validar que el genero sea 'femenino' o 'masculino' (mayúsculas y camelCase)
+  let genero = prompt("Ingrese el género del alumno:");
   if (!/^(femenino|masculino|[Ff]emenino|[Mm]asculino)$/.test(genero)) {
     console.log("Error: El género debe ser 'femenino' o 'masculino'.");
     return;
   }
 
-  // Validar que la edad sea un número
+  let edad = parseInt(prompt("Ingrese la edad del alumno:"));
   if (typeof edad !== 'number' || isNaN(edad)) {
     console.log("Error: La edad debe ser un número.");
     return;
-  }
+  } 
 
   const index = alumnos.findIndex(alumno => alumno.nombre === nombre);
   if (index !== -1) {
@@ -121,7 +129,7 @@ function actualizarAlumno(nombre, edad, genero) {
   } else {
     console.log(`Error: No se encontró al alumno ${nombre}.`);
   }
-} */
+}
 
 
 function cargarAsistencia(nombre, fecha, presente) {
@@ -201,7 +209,29 @@ let opcion = parseInt(prompt("Ingrese el número de la opción deseada:"));
         break;
   
       case 3:
-        agregarAlumno();
+        
+      let accion;
+
+      while (true) {
+          console.log("Gestion de Alumnos");
+          console.log("1- Agregar Alumno");
+          console.log("2- Modificar alumno");
+          console.log("3- Eliminar alumno");
+          console.log("Presione cualquier letra para salir");
+      
+          accion = prompt("Ingrese opción (1/2/3)");
+      
+          if (accion === "1") {
+              agregarAlumno();
+          } else if (accion === "2") {
+              actualizarAlumno();
+          } else if (accion === "3") {
+              eliminarAlumno();
+          } else {
+              // Si la opción no es 1, 2 o 3, salimos del bucle
+              break;
+          }
+      }
         break;
   
       case 4:
