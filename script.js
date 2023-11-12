@@ -47,7 +47,8 @@ function alumno(nombre, edad, genero) {
   this.asistencia = [];
 }
 
-function agregarAlumno(nombre, edad, genero) {
+function agregarAlumno() {
+  let nombre = prompt("Ingrese el nombre del alumno:");
   // Validar que el nombre sea un string
   if (typeof nombre !== 'string') {
     console.log("Error: El nombre debe ser un string.");
@@ -55,16 +56,18 @@ function agregarAlumno(nombre, edad, genero) {
   }
 
   // Validar que el genero sea 'femenino' o 'masculino' (mayúsculas y camelCase)
+  let genero = prompt("Ingrese el género del alumno:");
   if (!/^(femenino|masculino|[Ff]emenino|[Mm]asculino)$/.test(genero)) {
     console.log("Error: El género debe ser 'femenino' o 'masculino'.");
     return;
   }
 
+  let edad = parseInt(prompt("Ingrese la edad del alumno:"));
   // Validar que la edad sea un número
   if (typeof edad !== 'number' || isNaN(edad)) {
     console.log("Error: La edad debe ser un número.");
     return;
-  }
+  } 
 
   // Verificar si el nombre del alumno ya existe
   const alumnoExistente = alumnos.find(alumno => alumno.nombre === nombre);
@@ -81,7 +84,7 @@ function agregarAlumno(nombre, edad, genero) {
   }
 }
 
-function eliminarAlumno(nombre) {
+/* function eliminarAlumno(nombre) {
   // Mostrar confirmación antes de eliminar
   const confirmar = confirm(`¿Estás seguro de eliminar al alumno ${nombre}?`);
   if (confirmar) {
@@ -118,7 +121,7 @@ function actualizarAlumno(nombre, edad, genero) {
   } else {
     console.log(`Error: No se encontró al alumno ${nombre}.`);
   }
-}
+} */
 
 
 function cargarAsistencia(nombre, fecha, presente) {
@@ -198,11 +201,7 @@ let opcion = parseInt(prompt("Ingrese el número de la opción deseada:"));
         break;
   
       case 3:
-        let nombre = prompt("Ingrese el nombre del alumno:");
-        let edad = parseInt(prompt("Ingrese la edad del alumno:"));
-        let genero = prompt("Ingrese el género del alumno:");
-        agregarAlumno(nombre, edad, genero);
-        console.log("Alumno agregado con éxito.");
+        agregarAlumno();
         break;
   
       case 4:
