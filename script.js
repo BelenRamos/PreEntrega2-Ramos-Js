@@ -62,7 +62,7 @@ function agregarAlumno() {
   }
 
   // Validar que el genero sea 'femenino' o 'masculino' (mayúsculas y camelCase)
-  let genero = prompt("Ingrese el género del alumno:");
+  let genero = prompt("Ingrese el género del alumno: (Femenino/Masculino)");
   if (!/^(femenino|masculino|[Ff]emenino|[Mm]asculino)$/.test(genero)) {
     console.log("Error: El género debe ser 'femenino' o 'masculino'.");
     return;
@@ -108,7 +108,7 @@ function actualizarAlumno() {
     return;
   }
 
-  let genero = prompt("Ingrese el género del alumno:");
+  let genero = prompt("Ingrese el género del alumno (Femenino/Masculino):");
   if (!/^(femenino|masculino|[Ff]emenino|[Mm]asculino)$/.test(genero)) {
     console.log("Error: El género debe ser 'femenino' o 'masculino'.");
     return;
@@ -238,9 +238,8 @@ let opcion = parseInt(prompt("Ingrese el número de la opción deseada:"));
   
       case 4:
         let nombreAlumno = prompt("Ingrese el nombre del alumno:");
-        let fechaAsistencia = prompt("Ingrese la fecha de la asistencia (YYYY-MM-DD):");
-        let presente = confirm("¿El alumno estuvo presente?");
-        cargarAsistencia(nombreAlumno, fechaAsistencia, presente);
+        let presente = confirm("¿El alumno está presente?");
+        cargarAsistencia(nombreAlumno,  presente);
         console.log("Asistencia registrada con éxito.");
         break;
   
